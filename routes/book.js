@@ -2,7 +2,8 @@ const express = require('express');
 const router = express.Router();
 const bookCtrl = require('../controllers/book');
 const auth = require('../middleware/auth');
-const multer = require('../middleware/multer-config');
+const { upload, processImage } = require('../middleware/multer-config');  // Middleware multer et sharp
+
 
 // Route pour créer un livre avec optimisation de l'image
 router.post('/', auth, upload, processImage, bookCtrl.createBook);
